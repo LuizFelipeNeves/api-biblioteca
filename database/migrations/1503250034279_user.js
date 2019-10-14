@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 const Schema = use('Schema')
 
@@ -6,14 +6,15 @@ class UserSchema extends Schema {
   up () {
     this.create('users', table => {
       table.increments()
-      table
-        .string('username', 80)
-        .notNullable()
-        .unique()
+      table.string('first_name', 80).notNullable()
+      table.string('last_name', 80).notNullable()
       table
         .string('email', 254)
         .notNullable()
         .unique()
+
+      // gender
+      // date of birth
       table.string('password', 60).notNullable()
       table.string('token')
       table.timestamp('token_created_at')
