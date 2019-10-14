@@ -4,6 +4,14 @@ const File = use('App/Models/File')
 const Helpers = use('Helpers')
 
 class FileController {
+  async show ({ params, response }) {
+    const file = await File.findBy('file', params.name)
+    if (file) return response.download(Helpers.tmpPath(`uploads/${file.file}`))
+    return response
+      .status(404)
+      .send({ error: { messsage: 'Arquivo não encontrado' } })
+  }
+
   /**
    * Create/save a new file.
    * POST files
