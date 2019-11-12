@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable class-methods-use-this */
 
 'use strict';
@@ -27,12 +28,12 @@ class ForgotPasswordController {
 
       const url = request.input('redirect_url');
       if (!url) {
-        return response.status(404).send({
-          error: {
+        return response.status(404).send([
+          {
             message:
               'Insira a rota de redirecionamento do usuário: redirect_url',
           },
-        });
+        ]);
       }
 
       await Mail.send(
