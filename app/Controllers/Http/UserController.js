@@ -1,18 +1,18 @@
-'use strict';
+/* eslint-disable class-methods-use-this */
 
-const User = use('App/Models/User')
+const User = use('App/Models/User');
 
 class UserController {
-  async store ({ request, response }) {
+  async store({ request, response }) {
     try {
-      const data = request.only(['username', 'email', 'password'])
-      return User.create(data)
+      const data = request.only(['username', 'email', 'password']);
+      return User.create(data);
     } catch (error) {
       return response.status(404).send({
-        error: { message: 'E-mail ou username já cadastrado!' }
-      })
+        error: { message: 'E-mail ou username já cadastrado!' },
+      });
     }
   }
 }
 
-module.exports = UserController
+module.exports = UserController;

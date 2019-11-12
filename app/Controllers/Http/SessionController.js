@@ -1,10 +1,9 @@
-'use strict';
-
+/* eslint-disable class-methods-use-this */
 class SessionController {
-  async store ({ request, response, auth }) {
-    const { email, password } = request.all()
-    return auth.attempt(email, password)
+  async store({ request, auth }) {
+    const { email, password } = request.all();
+    return auth.attempt(email, password);
   }
 }
 
-module.exports = SessionController
+module.exports = SessionController;
