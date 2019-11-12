@@ -1,7 +1,6 @@
 /* eslint-disable class-methods-use-this */
 
 const User = use('App/Models/User');
-
 class UserController {
   async store({ request, response }) {
     try {

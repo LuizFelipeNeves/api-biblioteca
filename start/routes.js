@@ -8,15 +8,14 @@ Route.post('passwords', 'ForgotPasswordController.store');
 Route.put('passwords', 'ForgotPasswordController.update');
 
 Route.get('files/:name', 'FileController.show');
-Route.post('files', 'FileController.store');
 Route.get('files', 'FileController.filter');
+Route.post('files', 'FileController.store');
 
 Route.get('books/:slug', 'BookController.find');
 Route.get('books', 'BookController.query');
+Route.post('books', 'BookController.store');
 
 /*
     TODO:
-        Validator,
-        Create a controller for books,
-        Find with database, paginate.
+        Validator
 */

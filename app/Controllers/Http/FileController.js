@@ -1,24 +1,19 @@
+/* eslint-disable no-undef */
 /* eslint-disable class-methods-use-this */
-
-'use strict';
 
 const File = use('App/Models/File');
 const Helpers = use('Helpers');
 
 class FileController {
   async show({ params, response }) {
-    const { file } = await File.findBy('file', params.name);
-    if (file) return response.download(Helpers.tmpPath(`uploads/${file}`));
+    const file = await File.findBy('file', params.name);
+    if (file) return response.download(Helpers.tmpPath(`uploads/${file.file}`));
     return response.status(404).send([{ messsage: 'Arquivo não encontrado' }]);
   }
 
   /**
    * Create/save a new file.
    * POST files
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
    */
   async store({ request, response }) {
     try {
